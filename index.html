@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./index.css">
+    <title>Acasa</title>
+  </head>
+  <body>
+
+    <div class="navigation">
+      <h1>Library</h1>
+    </div>
+
+    <div class="container">
+      <button type="button" class="addNew" name="submit">+ Add book</button>
+      <div id="container-book">
+
+      </div>
+    </div>
+
+    <div class="container-form hideIt">
+      <button type="button" id="cancelBtn" name="cancelBtn">X</button>
+      <form class="formular">
+        <label for="bookTitle">Book title:</label>
+        <input type="text" name="bookTitle" id="bookTitle" required>
+        <label for="bookAuthor">Book author:</label>
+        <input type="text" name="bookAuthor" id="bookAuthor" required>
+        <label for="nbPages">Number of pages:</label>
+        <input type="number" name="nbPages" id="nbPages" required>
+        <div style="display:flex;align-items:center">
+          <label for="readStatus" style="margin-right: 10px;">Have you read it?</label>
+          <select class="readStatus" id="readStatus" name="readStatus">
+            <option value="true">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        <button type="button" id="addBook" onclick="addBookToLibrary()" name="addBook">Add book</button>
+      </form>
+    </div>
+
+      <script src="./index.js" charset="utf-8"></script>
+  </body>
+</html>
