@@ -4,6 +4,22 @@ let cancelBtn = document.querySelector('#cancelBtn');
 let containerBook = document.getElementById('container-book');
 const form = document.querySelector('.container-form');
 
+function changeStatus(e) {
+  if (e.innerHTML === "Not Read") {
+    e.innerHTML = "Read";
+    e.style.backgroundColor = "#D95D39";
+    e.style.color = "white";
+  } else if (e.innerHTML === "Read") {
+    e.innerHTML = "Not Read";
+    e.style.backgroundColor = "#7B9E89";
+    e.style.color = "white";
+  } else {
+    e.innerHTML = "Not Read";
+    e.style.backgroundColor = "#7B9E89";
+    e.style.color = "white";
+  }
+}
+
 cancelBtn.addEventListener('click', (e) => {
   if (form && !form.classList.contains('hideIt')) {
     form.classList.add('hideIt');
@@ -30,25 +46,22 @@ let myLibrary = [
   {
     title: 'Pastoriti',
     author: 'Paul David Tripp',
-    nbPages: 	268,
-    read: 'no'
+    nbPages: 	268
   }
 ];
 
-function Book(title, author, nbPages, read) {
+function Book(title, author, nbPages) {
   this.title = title;
   this.author = author;
   this.nbPages = nbPages;
-  this.read = read;
 }
 
 function addBookToLibrary() {
   let bTitle = document.getElementById('bookTitle');
   let bAuthor = document.getElementById('bookAuthor');
   let bNbPages = document.getElementById('nbPages');
-  let bStatus = document.getElementById('readStatus');
 
-  let newBook = new Book(bTitle.value, bAuthor.value, bNbPages.value, bStatus.value);
+  let newBook = new Book(bTitle.value, bAuthor.value, bNbPages.value);
   myLibrary.push(newBook);
   form.classList.add('hideIt');
   container.classList.remove('hideIt');
@@ -62,10 +75,10 @@ function renderBooks(data) {
     data.forEach(book => {
       const html = `
         <div class="container-card">
-          <h3>Title: ${book.title}</h3>
-          <h4>Author: ${book.author}</h4>
-          <h4>Number of pages: ${book.nbPages}</h4>
-          <h4>Read: ${book.read}</h4>
+          <h3>${book.title}</h3>
+          <h4>${book.author}</h4>
+          <h4>${book.nbPages} of pages</h4>
+          <button onclick="changeStatus(this)" id="readStatus">Not Read</button>
         </div>
       `;
       booksToRender += html;
