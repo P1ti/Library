@@ -4,106 +4,33 @@
 
 body {
   font-family: sans-serif;
+  font-size: 18px;
 }
 
 .navigation {
+  padding: 25px;
   background: #0E1428;
   color: white;
-  padding: 25px;
+  font-size: 1.2rem;
 }
 
 .container {
-  margin: 10px 0;
+  position: relative;
 }
 
 .addNew {
-  font-size: 1rem;
-  display: flex;
-  margin: 0 auto;
-  background: white;
-  color: #D95D39;
-  padding: 15px;
-  border: none;
-  border-radius: 25px;
-  outline: none;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.addNew:hover, #addBook:hover {
-  transition: .4s;
-  background: #D95D39;
-  color: white;
-}
-
-.container-form {
-  max-width: 480px;
-  padding: 40px 20px;
-  position: relative;
-  margin: 0 auto;
-  margin-top: -150px;
-  transform: translateY(50%);
-  background: #0E1428;
-  color: white;
-  border-radius: 15px;
-}
-
-#cancelBtn {
-  font-weight: bolder;
-  font-size: 1.1rem;
+  position: absolute;
+  left: 50%;
+  top: 100%;
   background: inherit;
-  color: #D95D39;
-  cursor: pointer;
-  border-color: #D95D39;
-  border-radius: 5px;
-  outline: none;
-  margin: 5px 0;
-  position: relative;
-  left: 100%;
-  transform: translateX(-100%);
-}
-
-.container-form > form {
-  display: flex;
-  flex-direction: column;
-}
-
-.container-form > form * {
-  margin: 5px 0;
-}
-
-#addBook {
-  position: relative;
-  margin: 0 auto;
-  font-size: 1rem;
-  padding: 15px;
-  border: none;
+  color: #F18805;
   border-radius: 25px;
   outline: none;
-  cursor: pointer;
-  font-weight: bold;
-  color: #D95D39;
-  background: white;
+  border: none;
 }
 
-.hideIt {
-  display: none;
-}
-
-#container-book {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.container-card {
-  width: 200px;
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid black;
-  border-radius: 20px;
-}
-
-.container-card * {
-  margin: 10px 0;
+.addNew:hover {
+  background: #F18805;
+  transition: .3 ease-in;
+  color: white;
 }

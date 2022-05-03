@@ -32,36 +32,6 @@ let myLibrary = [
     author: 'Paul David Tripp',
     nbPages: 	268,
     read: 'no'
-  },
-  {
-    title: 'Pastoriti',
-    author: 'Paul David Tripp',
-    nbPages: 	268,
-    read: 'no'
-  },
-  {
-    title: 'Pastoriti',
-    author: 'Paul David Tripp',
-    nbPages: 	268,
-    read: 'no'
-  },
-  {
-    title: 'Pastoriti',
-    author: 'Paul David Tripp',
-    nbPages: 	268,
-    read: 'no'
-  },
-  {
-    title: 'Pastoriti',
-    author: 'Paul David Tripp',
-    nbPages: 	268,
-    read: 'no'
-  },
-  {
-    title: 'Pastoriti',
-    author: 'Paul David Tripp',
-    nbPages: 	268,
-    read: 'no'
   }
 ];
 
