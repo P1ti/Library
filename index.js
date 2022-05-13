@@ -1,9 +1,9 @@
 let myLibrary = [
   {
-    title: "Bible",
-    author: "God",
-    nbPages: 1800,
-    readStatus: true
+    title: "Ciocoii vechi si noi",
+    author: "Nicolae Filimon",
+    nbPages: 238,
+    readStatus: false
   }
 ];
 
@@ -15,7 +15,22 @@ function Book(title, author, nbPages, readStatus) {
 }
 
 function addBookToLibrary() {
+  let title = document.querySelector('#bookTitle').value;
+  let author = document.querySelector('#bookAuthor').value;
+  let nbPages = document.querySelector('#nbPages').value;
 
+  if (title.length === 0) {
+    document.querySelector('#bookTitle').placeholder = "Te rog sa completezi acest camp";
+  } else if (author.length === 0) {
+    document.querySelector('#bookAuthor').placeholder = "Te rog sa completezi acest camp";
+  } else if (nbPages.length === 0) {
+    document.querySelector('#nbPages').placeholder = "Te rog sa completezi acest camp";
+  } else {
+    let newBook = new Book(title, author, nbPages, false);
+    myLibrary.push(newBook);
+    renderBooks(myLibrary);
+    closeForm();
+  }
 }
 
 function renderBooks(data) {
