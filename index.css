@@ -55,6 +55,10 @@ body {
   flex-direction: column;
 }
 
+.container-form .formular * {
+  margin: 5px 0px;
+}
+
 .container-form * {
   margin: .2rem 0;
 }
@@ -98,7 +102,7 @@ body {
   justify-content: space-around;
 }
 
-#readStatus {
+#readStatus, #deleteBook {
   border: none;
   padding: 10px 15px;
   border-radius: 25px;
@@ -106,8 +110,16 @@ body {
   cursor: pointer;
 }
 
-@media (max-width: 376px) {
-  .container-form {
+#deleteBook {
+  background-color: #F11805;
+  color: white;
+}
 
-  }
+input[type="text"], input[type="number"] {
+  background: inherit;
+  color: white;
+  padding: 5px;
+  border: 1.2px solid #F18805;
+  border-radius: 2px;
+  outline: none;
 }

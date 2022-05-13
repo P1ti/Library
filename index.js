@@ -1,90 +1,73 @@
-let addNew = document.querySelector('.addNew');
-let container = document.querySelector('.container');
-let cancelBtn = document.querySelector('#cancelBtn');
-let containerBook = document.getElementById('container-book');
-const form = document.querySelector('.container-form');
-
-function changeStatus(e) {
-  if (e.innerHTML === "Not Read") {
-    e.innerHTML = "Read";
-    e.style.backgroundColor = "#D95D39";
-    e.style.color = "white";
-  } else if (e.innerHTML === "Read") {
-    e.innerHTML = "Not Read";
-    e.style.backgroundColor = "#7B9E89";
-    e.style.color = "white";
-  } else {
-    e.innerHTML = "Not Read";
-    e.style.backgroundColor = "#7B9E89";
-    e.style.color = "white";
-  }
-}
-
-cancelBtn.addEventListener('click', (e) => {
-  if (form && !form.classList.contains('hideIt')) {
-    form.classList.add('hideIt');
-    container.classList.remove('hideIt');
-  }
-  else {
-    form.classList.remove('hideIt');
-    container.classList.add('hideIt')
-  }
-});
-
-addNew.addEventListener('click', (e) => {
-  if (form && form.classList.contains('hideIt')) {
-    form.classList.remove('hideIt');
-    container.classList.add('hideIt');
-  }
-  else {
-    form.classList.add('hideIt');
-    container.classList.remove('hideIt');
-  }
-});
-
 let myLibrary = [
   {
-    title: 'Pastoriti',
-    author: 'Paul David Tripp',
-    nbPages: 	268
+    title: "Bible",
+    author: "God",
+    nbPages: 1800,
+    readStatus: true
   }
 ];
 
-function Book(title, author, nbPages) {
+function Book(title, author, nbPages, readStatus) {
   this.title = title;
   this.author = author;
   this.nbPages = nbPages;
+  this.readStatus = readStatus;
 }
 
 function addBookToLibrary() {
-  let bTitle = document.getElementById('bookTitle');
-  let bAuthor = document.getElementById('bookAuthor');
-  let bNbPages = document.getElementById('nbPages');
 
-  let newBook = new Book(bTitle.value, bAuthor.value, bNbPages.value);
-  myLibrary.push(newBook);
-  form.classList.add('hideIt');
-  container.classList.remove('hideIt');
-  renderBooks(myLibrary);
 }
 
-
 function renderBooks(data) {
-  let booksToRender = [];
+  let htmlToAdd = "";
   if (data && data.length > 0) {
-    data.forEach(book => {
-      const html = `
+    data.forEach((item, i) => {
+      htmlToAdd += `
         <div class="container-card">
-          <h3>${book.title}</h3>
-          <h4>${book.author}</h4>
-          <h4>${book.nbPages} of pages</h4>
-          <button onclick="changeStatus(this)" id="readStatus">Not Read</button>
+          <p>${item.title}<p>
+          <p>${item.author}<p>
+          <p>${item.nbPages} pages<p>
+          <button id="deleteBook" onclick="deleteBook(${i})" >Delete</button>
+          <button id="readStatus" onclick="changeStatus(${i})" >${readSt(item.readStatus)}</button>
         </div>
       `;
-      booksToRender += html;
     });
+
   }
-  containerBook.innerHTML = booksToRender;
+  document.querySelector('#container-book').innerHTML = htmlToAdd;
 }
 
 renderBooks(myLibrary);
+
+function readSt(status) {
+  if (status === false) {
+    return "Not read yet";
+  } else {
+    return "Read";
+  }
+  return status;
+}
+
+function changeStatus(i) {
+  if (myLibrary[i].readStatus === true) {
+    myLibrary[i].readStatus = false;
+  } else {
+    myLibrary[i].readStatus = true;
+  }
+  document.querySelector('#readStatus').innerHTML = readSt(myLibrary[i].readStatus);
+}
+
+function deleteBook(i) {
+    myLibrary.splice(i, 1);
+    renderBooks(myLibrary);
+}
+
+function openForm() {
+  if (document.querySelector('.container-form').classList.contains('hideIt')) {
+    document.querySelector('.container-form').classList.remove('hideIt');
+  }
+}
+
+function closeForm() {
+  document.querySelector('.container-form').classList.add('hideIt');
+}
