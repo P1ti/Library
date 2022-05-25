@@ -64,12 +64,13 @@ function readSt(status) {
 }
 
 function changeStatus(i) {
+  readStatusV = false;
   if (myLibrary[i].readStatus === true) {
-    myLibrary[i].readStatus = false;
+    readStatusV = myLibrary[i].readStatus = false;
   } else {
-    myLibrary[i].readStatus = true;
+    readStatusV = myLibrary[i].readStatus = true;
   }
-  document.querySelector('#readStatus').innerHTML = readSt(myLibrary[i].readStatus);
+  document.querySelectorAll('#readStatus')[i].innerHTML = readSt(readStatusV);
 }
 
 function deleteBook(i) {
@@ -80,6 +81,7 @@ function deleteBook(i) {
 function openForm() {
   if (document.querySelector('.container-form').classList.contains('hideIt')) {
     document.querySelector('.container-form').classList.remove('hideIt');
+    document.querySelector('.formular').reset();
   }
 }
 
